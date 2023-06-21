@@ -16,6 +16,7 @@ export const register = async (req, res) => {
             impressions: Math.floor(Math.random() * 10000)
         })
         const savedUser = await newUser.save();
+        // delete savedUser.password; // => do it later
         res.status(201).json(savedUser)
     } catch (error) {
         res.status(500).json({ error })

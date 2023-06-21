@@ -12,14 +12,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
-  reducer: persistReducer,
-  middleware: (getDefaultMiddleware) => {
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PERSIST, PAUSE, PURGE, REGISTER]
-      }
-    })
-  }
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoreActions: [FLUSH, REHYDRATE, PERSIST, PAUSE, PURGE, REGISTER]
+    }
+  })
 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
