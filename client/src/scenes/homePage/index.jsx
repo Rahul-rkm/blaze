@@ -4,6 +4,9 @@ import UserWidget from "../widgets/UserWidget"
 import { ErrorBoundary } from "react-error-boundary"
 import { useSelector } from "react-redux"
 import MyPostWidget from "../widgets/MyPostWidget"
+import PostsWidget from "../widgets/PostsWidget"
+import AdvertWidget from "../widgets/AdvertWidget"
+import FriendListWidget from "../widgets/FriendListWidget"
 
 const HomePage = () => {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -19,18 +22,20 @@ const HomePage = () => {
                 sx={{ scrollPaddingTop: "80px", marginTop: "80px", scrollMarginTop: "80px" }}
             >
                 <Box flexBasis={isNonMobileScreens ? '26%' : undefined}>
-                    <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                        <UserWidget userId={_id} picturePath={picturePath} />
-                    </ErrorBoundary>
+                    <UserWidget userId={_id} picturePath={picturePath} />
                 </Box>
                 <Box flexBasis={isNonMobileScreens ? '42%' : undefined}
                     mt={isNonMobileScreens ? undefined : "2rem"}
                 >
                     <MyPostWidget picturePath={picturePath} />
+                    <PostsWidget userId={_id} />
                 </Box>
                 {isNonMobileScreens && (
                     <Box flexBasis="26%">
-
+                        <AdvertWidget />
+                        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                            <FriendListWidget />
+                        </ErrorBoundary>
                     </Box>
                 )}
             </Box>
