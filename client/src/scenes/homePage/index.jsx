@@ -10,12 +10,12 @@ const HomePage = () => {
     return (
         <Box>
             <Navbar />
-            <Box width="100%" height="80px" />
             <Box
                 width="100%"
                 padding="2rem 6%"
                 display={isNonMobileScreens ? 'flex' : 'block'}
                 justifyContent="space-between"
+                sx={{ scrollPaddingTop: "80px", marginTop: "80px", scrollMarginTop: "80px" }}
             >
                 <Box flexBasis={isNonMobileScreens ? '26%' : undefined}>
                     <ErrorBoundary fallback={<div>Something went wrong</div>}>
