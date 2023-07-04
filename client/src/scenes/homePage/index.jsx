@@ -34,7 +34,7 @@ const HomePage = () => {
                     <Box flexBasis="26%">
                         <AdvertWidget />
                         <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                            <FriendListWidget />
+                            {/* <FriendListWidget /> */}
                         </ErrorBoundary>
                     </Box>
                 )}
